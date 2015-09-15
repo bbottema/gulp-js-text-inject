@@ -51,7 +51,7 @@ gulp.task('js', function() {
     return gulp.src('path/to/your/js/*.js')
         .pipe(inject({
             basepath: 'path/to/your/js/',
-            pattern: /Loader.load\(['"]([a-zA-Z0-9\-_.]+)['"]\)/g
+            pattern: /Loader.load\(['"]([a-zA-Z0-9\-_.\\/]+)['"]\)/g
         }))
         .pipe(gulp.dest('path/for/output'));
 });
