@@ -1,6 +1,6 @@
 {
   "name": "gulp-js-text-inject",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gulp plugin for injecting referenced text files back into JS code as strings",
   "main": "index.js",
   "scripts": {
