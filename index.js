@@ -6,6 +6,7 @@ var xtend = require('xtend');
 module.exports = function(options) {
     var opts = xtend({
         basepath: '',
+        relative: false,
         pattern: /'@@import ([a-zA-Z0-9\-_.\\/]+)'/g,
         debug: false
     }, options);
@@ -18,7 +19,11 @@ module.exports = function(options) {
 
             var process = function(contents) {
                 return contents.replace(opts.pattern, function(match, filepath) {
-                    var fp = path.join(opts.basepath, filepath);
+                    var fp = '';
+                    if(opts.relative)
+                        fp = path.join(path.dirname(file.path), opts.basepath, filepath);
+                    else
+                        fp = path.join(opts.basepath, filepath);
 
                     try {
                         var filecontents = fs.readFileSync(fp, { encoding: 'utf8' });
@@ -42,7 +47,7 @@ module.exports = function(options) {
                     file.contents = new Buffer(process(data));
                     callback(null, file);
                 });
-            } else { 
+            } else {
                 callback(null, file);
             }
         }
