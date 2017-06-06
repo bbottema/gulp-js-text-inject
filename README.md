@@ -63,4 +63,5 @@ Option | Type | Default | Details
 ------ | ---- | ------- | -------
 basepath | string | `""` | Base path to look up referenced templates from
 pattern | RegExp | `/'@@import ([a-zA-Z0-9\-_.\\/]+)'/g` | Pattern to match template references. Should have one capture group that will match template path
+relative | boolean | `false` | Resolve templates relative to the file being processed
 debug | boolean | `false` | Displays some information while working - processed files, found references, injection result
