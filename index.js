@@ -28,7 +28,7 @@ module.exports = function(options) {
                     try {
                         var filecontents = fs.readFileSync(fp, { encoding: 'utf8' });
                         opts.debug && console.log('   ', filepath, 'OK');
-                        return "'" + filecontents.replace(/\r?\n/g, '\\n').replace(/'/g, "\\'") + "'";
+                        return JSON.stringify(filecontents).replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029');
                     }
                     catch (e) {
                         console.error('unable to read utf8 file', fp);
